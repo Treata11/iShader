@@ -61,13 +61,15 @@ let package = Package(
         ),
         .target(
             name: "AudioVisualizer",
-            dependencies: ["CBass"],
+            dependencies: [
+                .byName(name: "CBass", condition: .when(platforms: [.iOS, .macOS]))
+            ],
             resources: [.process("Shaders")]
         ),
         .target(
             name: "ColorEffect",
             resources: [
-                .process("ColorEffect Shaders")
+                .process("Shaders")
             ]
         ),
         .target(
