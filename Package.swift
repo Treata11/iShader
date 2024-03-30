@@ -22,6 +22,18 @@ let package = Package(
         .library(
             name: "ColorEffect",
             targets: ["ColorEffect"]
+        ),
+        .library(
+            name: "DistortionEffect",
+            targets: ["DistortionEffect"]
+        ),
+        .library(
+            name: "LayerEffect",
+            targets: ["LayerEffect"]
+        ),
+        .library(
+            name: "Transition",
+            targets: ["Transition"]
         )
     ],
     
@@ -36,7 +48,10 @@ let package = Package(
             name: "iShader",
             dependencies: [
                 .target(name: "AudioVisualizer"),
-                .target(name: "ColorEffect")
+                .target(name: "ColorEffect"),
+                .target(name: "DistortionEffect"),
+                .target(name: "LayerEffect"),
+                .target(name: "Transition")
             ]
         ),
         .target(
@@ -45,6 +60,18 @@ let package = Package(
         ),
         .target(
             name: "ColorEffect",
+            dependencies: []
+        ),
+        .target(
+            name: "DistortionEffect",
+            dependencies: []
+        ),
+        .target(
+            name: "LayerEffect",
+            dependencies: []
+        ),
+        .target(
+            name: "Transition",
             dependencies: []
         ),
         
