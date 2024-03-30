@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "iShader",
     
-    platforms: [.iOS(.v17), .macOS(.v14), .visionOS(.v1)],
+    platforms: [.iOS(.v17), .macOS(.v14), .macCatalyst(.v15), .tvOS(.v15), .visionOS(.v1)],
     
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -32,6 +32,10 @@ let package = Package(
             targets: ["LayerEffect"]
         ),
         .library(
+            name: "ShaderArt",
+            targets: ["ShaderArt"]
+        ),
+        .library(
             name: "Transition",
             targets: ["Transition"]
         )
@@ -47,32 +51,40 @@ let package = Package(
         .target(
             name: "iShader",
             dependencies: [
-                .target(name: "AudioVisualizer"),
+                .target(name: "AudioVisualizer", condition: .when(platforms: [.iOS, .macOS])),
                 .target(name: "ColorEffect"),
                 .target(name: "DistortionEffect"),
                 .target(name: "LayerEffect"),
+                .target(name: "ShaderArt"),
                 .target(name: "Transition")
             ]
         ),
         .target(
             name: "AudioVisualizer",
-            dependencies: ["CBass"]
+            dependencies: ["CBass"],
+            resources: [.process("Shaders")]
         ),
         .target(
             name: "ColorEffect",
-            dependencies: []
+            resources: [
+                .process("ColorEffect Shaders")
+            ]
         ),
         .target(
             name: "DistortionEffect",
-            dependencies: []
+            resources: [.process("Shaders")]
         ),
         .target(
             name: "LayerEffect",
-            dependencies: []
+            resources: [.process("Shaders")]
+        ),
+        .target(
+            name: "ShaderArt",
+            resources: [.process("2DArt/Shaders")]
         ),
         .target(
             name: "Transition",
-            dependencies: []
+            resources: [.process("Shaders")]
         ),
         
         // test targets
