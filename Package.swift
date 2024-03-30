@@ -12,7 +12,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "iShader",
-            type: .static,
+//            type: .static,
             targets: ["iShader"]
         ),
         .library(

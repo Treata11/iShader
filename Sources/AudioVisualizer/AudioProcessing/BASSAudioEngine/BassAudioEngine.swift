@@ -144,7 +144,7 @@ public class BassAudioEngine {
 
     // MARK: - Init(s)
     
-    init(filePath: String? = nil, fps: Double = 48) {
+    public init(filePath: String? = nil, fps: Double = 48) {
         self.filePath = filePath
         self.fps = fps
         
