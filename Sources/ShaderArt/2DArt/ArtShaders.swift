@@ -13,7 +13,7 @@ import SwiftUI
 public extension View {
     
     // MARK: - Hypnotic Ripples
-    func hypnoticRipples(seconds: Double) -> some View {
+    func hypnoticRipples(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.hypnoticRipples(
                 .boundingRect,
@@ -24,7 +24,7 @@ public extension View {
     
     // MARK: - Crystal Caustic
     // TODO: Add gestures?
-    func crystalCaustic(seconds: Double) -> some View {
+    func crystalCaustic(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.crystalCaustic(
                 .boundingRect,
@@ -34,7 +34,7 @@ public extension View {
     }
     
     // MARK: - Beam Droplet
-    func beamDroplet(seconds: Double) -> some View {
+    func beamDroplet(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.beamDroplet(
                 .boundingRect,
@@ -44,7 +44,7 @@ public extension View {
     }
     
     // MARK: - Sine Waves
-    func sineWaves(seconds: Double, waveCount: Int = 7) -> some View {
+    func sineWaves(seconds: TimeInterval, waveCount: Int = 7) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.sineWaves(
                 .boundingRect,
@@ -56,7 +56,7 @@ public extension View {
     
     // MARK: - Portal
     /// Worth investing in
-    func portal(seconds: Double) -> some View {
+    func portal(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.portal(
                 .boundingRect,
@@ -67,7 +67,7 @@ public extension View {
     
     // MARK: - Neon Rug
     // TODO: Add Gesture? zoom-in/out?
-    func neonRug(seconds: Double, neonEffect: Bool = true) -> some View {
+    func neonRug(seconds: TimeInterval, neonEffect: Bool = true) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.neonRug(
                 .boundingRect,
@@ -82,7 +82,7 @@ public extension View {
      
      > Supports Gesture.
      */
-    func starNest(seconds: Double, translation: CGPoint = .zero) -> some View {
+    func starNest(seconds: TimeInterval, translation: CGPoint = .zero) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.starNest(
                 .boundingRect,
@@ -94,7 +94,7 @@ public extension View {
     
     // MARK: - Blue Void
     /// Also known as `simplicity`
-    func blueVoid(seconds: Double, touchLocation: CGPoint = .zero) -> some View {
+    func blueVoid(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.blueVoid(
                 .boundingRect,
@@ -106,7 +106,7 @@ public extension View {
     
     // MARK: - Spiral Riders
     /// Extremely resource intensive
-    func spiralRiders(seconds: Double) -> some View {
+    func spiralRiders(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.spiralRiders(
                 .boundingRect,
@@ -116,7 +116,7 @@ public extension View {
     }
     
     // MARK: - Black Hole Dawn
-    func blackHoleDawn(seconds: Double) -> some View {
+    func blackHoleDawn(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.blackHoleDawn(
                 .boundingRect,
@@ -127,7 +127,7 @@ public extension View {
     
     // MARK: - Cosmic Blood
     // TODO: Room for optimization?
-    func cosmicBlood(seconds: Double) -> some View {
+    func cosmicBlood(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.cosmicBlood(
                 .boundingRect,
@@ -143,7 +143,7 @@ public extension View {
      
      > Supports Gestures
      */
-    func pulsatingFlesh(seconds: Double, touchLocation: CGPoint = .zero) -> some View {
+    func pulsatingFlesh(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
         self.colorEffect(
             ShaderArtLibrary.pulsatingFlesh(
                 .boundingRect,
@@ -155,7 +155,7 @@ public extension View {
     
     // MARK: - Clouds
     // TODO: Introduce gestures
-    func clouds(seconds: Double) -> some View {
+    func clouds(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.clouds(
                 .boundingRect,
@@ -169,7 +169,7 @@ public extension View {
      
      > Supports Gestures
      */
-    func baseWarp(seconds: Double, gestureTranslation: CGPoint = .zero) -> some View {
+    func baseWarp(seconds: TimeInterval, gestureTranslation: CGPoint = .zero) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.baseWarp(
                 .boundingRect,
@@ -184,7 +184,7 @@ public extension View {
      
      > Supports Gestures
      */
-    func lensFlare(seconds: Double, gestureTranslation: CGPoint = .zero) -> some View {
+    func lensFlare(seconds: TimeInterval, gestureTranslation: CGPoint = .zero) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.lensFlare(
                 .boundingRect,
@@ -196,7 +196,7 @@ public extension View {
     
     // MARK: - Iris
     /// The `BeautiPi`'s logo
-    func iris(seconds: Double, corneaEdgeHue: Color = .init(red: 0.9, green: 0.6, blue: 0.2)) -> some View {
+    func iris(seconds: TimeInterval, corneaEdgeHue: Color = .init(red: 0.9, green: 0.6, blue: 0.2)) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.iris(
                 .boundingRect,
@@ -208,7 +208,7 @@ public extension View {
     }
     
     // MARK: - Retro Sun
-    func retroSun(seconds: Double) -> some View {
+    func retroSun(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.retroSun(
                 .boundingRect,
@@ -223,7 +223,7 @@ public extension View {
      
      > Supports Gesture.
      */
-    func turbulence(seconds: Double, translation: CGPoint = .zero) -> some View {
+    func turbulence(seconds: TimeInterval, translation: CGPoint = .zero) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.turbulence(
                 .boundingRect,
@@ -235,7 +235,7 @@ public extension View {
     
     // MARK: - Lava Blobs
     /// Extremely resource intensive
-    func lavaBlobs(seconds: Double) -> some View {
+    func lavaBlobs(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.lavaBlobs(
                 .boundingRect,
@@ -245,7 +245,7 @@ public extension View {
     }
 
     // MARK: - TM Gyroids
-    func tmGyroids(seconds: Double) -> some View {
+    func tmGyroids(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.tmGyroids(
                 .boundingRect,
@@ -256,7 +256,7 @@ public extension View {
     
     // MARK: - Fire Works
     // TODO: Fireworks on the touched position
-    func fireWorks(seconds: Double) -> some View {
+    func fireWorks(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.fireWorks(
                 .boundingRect,
@@ -267,7 +267,7 @@ public extension View {
     
     // MARK: - Explosion Cloud
     /// worth investing in
-    func explosionCloud(seconds: Double) -> some View {
+    func explosionCloud(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.explosionCloud(
                 .boundingRect,
@@ -278,7 +278,7 @@ public extension View {
     
     // MARK: - Mod Fan
     /// Looks great as a WallPaper
-    func modFan(seconds: Double) -> some View {
+    func modFan(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.modFan(
                 .boundingRect,
@@ -289,7 +289,7 @@ public extension View {
     
     // MARK: - Star Field
     // TODO: Impelemnt the GPU sound
-    func starField(seconds: Double) -> some View {
+    func starField(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.starField(
                 .boundingRect,
@@ -299,7 +299,7 @@ public extension View {
     }
     
     // MARK: - Singularity
-    func singularity(seconds: Double) -> some View {
+    func singularity(seconds: TimeInterval) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.singularity(
                 .boundingRect,
@@ -313,7 +313,7 @@ public extension View {
      
      > Supports Gesture.
      */
-    func glowingMarblingBlack(seconds: Double, translation: CGSize = .init(width: 1, height: 1)) -> some View {
+    func glowingMarblingBlack(seconds: TimeInterval, translation: CGSize = .init(width: 1, height: 1)) -> some View {
         return self.colorEffect(
             ShaderArtLibrary.glowingMarblingBlack(
                 .boundingRect,
@@ -323,6 +323,60 @@ public extension View {
         )
     }
     
+    // MARK: - Electric Field
+    // TODO: Introduce Touch compatibility
+    func electricField(seconds: TimeInterval) -> some View {
+        return self.colorEffect(
+            ShaderArtLibrary.electricField(
+                .boundingRect,
+                .float(seconds)
+            )
+        )
+    }
     
+    // MARK: - FBM Lightning
+    // Worth investing in.
+    func fbmLightning(seconds: TimeInterval) -> some View {
+        return self.colorEffect(
+            ShaderArtLibrary.fbmLightning(
+                .boundingRect,
+                .float(seconds)
+            )
+        )
+    }
+    
+    // MARK: - Wet Neural Network
+    // TODO: Potential for Audio Visualization
+    // TODO: Better feedback for gestures?
+    /**
+     
+     > Supports Gesture.
+     */
+    func wetNeuralNetwork(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
+        return self.colorEffect(
+            ShaderArtLibrary.wetNeuralNetwork(
+                .boundingRect,
+                .float(seconds),
+                .float2(touchLocation)
+            )
+        )
+    }
+    
+    // MARK: - Lightning
+    // TODO: Do sth with the gestures
+    /**
+     
+     > Supports Gesture.
+     > Very similar to `FBMLightning` but not as efficient.
+     */
+    func lightning01(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
+        return self.colorEffect(
+            ShaderArtLibrary.lightning01(
+                .boundingRect,
+                .float(seconds),
+                .float2(touchLocation)
+            )
+        )
+    }
     
 }

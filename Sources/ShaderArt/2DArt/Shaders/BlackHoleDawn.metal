@@ -1,10 +1,11 @@
-//
-//  BlackHoleDawn.metal
-//  MetalShaders
-//
-//  Created by Treata Norouzi on 3/1/24.
-//
-// https://www.shadertoy.com/view/lXsSRN
+/*
+ BlackHoleDawn.metal
+ iShader
+
+ Created by Treata Norouzi on 3/1/24.
+
+ Based on: https://www.shadertoy.com/view/lXsSRN
+*/
 
 #include <metal_stdlib>
 using namespace metal;
