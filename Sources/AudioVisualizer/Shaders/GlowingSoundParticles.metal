@@ -30,7 +30,7 @@ static half3 Orb(float2 uv, half3 color, float radius, float offset, float iTime
 
 // MARK: - Main
 [[ stitchable ]] half4 glowingSoundParticles(
-   float2 position, half4 color, float4 bounds, float iTime,
+   float2 position, float4 bounds, float iTime,
     device const float *iChannel, int count
 ) {
     float2 uv = 2 * float2(position - 0.5 * bounds.zw) / min(bounds.w, bounds.z);

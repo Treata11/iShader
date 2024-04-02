@@ -21,7 +21,7 @@ static half4 rays(half4 color, half4 background, float2 position, float radius, 
 // MARK: - Main
 
 [[ stitchable ]] half4 roundAudioSpecturm(
-   float2 position, half4 color, float4 bounds,
+   float2 position, float4 bounds, half4 bgColor,
     device const float *iChannel, int count,
     float rayCount
 ) {
@@ -38,9 +38,9 @@ static half4 rays(half4 color, half4 background, float2 position, float radius, 
     float RADIUS = 0.4; //max circle radius
     float RAY_LENGTH = 0.3; //ray's max length //increased by 0.1
     
-    color = rays(half4(1), color, float2(aspect/2, 0.5), RADIUS, rayCount, RAY_LENGTH, iChannel, count, uv);
+    bgColor = rays(half4(1), bgColor, float2(aspect/2, 0.5), RADIUS, rayCount, RAY_LENGTH, iChannel, count, uv);
     
-    return color;
+    return bgColor;
 }
 
 // MARK: - Helpers

@@ -29,7 +29,7 @@ static float getWeight(float f,
 // MARK: - Main
 
 [[ stitchable ]] half4 wavesRemix(
-    float2 position, half4 colorH, float4 bounds, float iTime,
+    float2 position, float4 bounds, float iTime,
     device const float *iChannel, int count
 ) {
     float2 uvTrue = position / bounds.zw;

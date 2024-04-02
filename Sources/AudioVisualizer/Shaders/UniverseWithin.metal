@@ -117,7 +117,7 @@ static float NetLayer(float2 st, float n, float t) {
 // MARK: - Main
 
 [[ stitchable ]] half4 universeWithin(
-   float2 position, half4 color, float4 bounds, float iTime, float2 iMouse,
+   float2 position, float4 bounds, float iTime, float2 iMouse,
     device const float *iChannel, int count
 ) {
     float2 uv = (position-bounds.zw * 0.5) / min(bounds.z, bounds.w);

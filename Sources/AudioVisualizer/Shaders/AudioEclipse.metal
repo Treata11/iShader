@@ -25,7 +25,7 @@ static float3 hsv2rgb(float3 c) {
 }
         
 [[ stitchable ]] half4 audioEclipse(
-    float2 position, half4 color, float4 bounds, float iTime,
+    float2 position, float4 bounds, float iTime,
     device const float *iChannel, int count
 ) {
     float2 p=(position - 0.5*bounds.zw)/min(bounds.z, bounds.w);

@@ -31,7 +31,7 @@ static float sampleMusic(device const float *iChannel, int count) {
 
 // MARK: - Main
 [[ stitchable ]] half4 shadesOfMusic(
-   float2 position, half4 color, float4 bounds, float iTime,
+   float2 position, float4 bounds, float iTime,
     device const float *iChannel, int count
 ) {
     const float speed = 0.7;

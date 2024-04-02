@@ -56,7 +56,7 @@ static float3 nrand3(float2 co) {
 // MARK: - Main
 
 [[ stitchable ]] half4 galaxyVisuals(
-   float2 position, half4 color, float4 bounds, float iTime,
+   float2 position, float4 bounds, float iTime,
     device const float *iChannel, int count
 ) {
     float2 uv = 2*position / bounds.zw - 1;

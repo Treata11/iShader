@@ -12,12 +12,12 @@ using namespace metal;
 
 
 [[ stitchable ]] half4 sineSoundWaves(
-   float2 position, half4 color, float4 bounds, float iTime,
+   float2 position, float4 bounds, float iTime,
     device const float *iChannel, int count, float waves
 ) {
     float2 uv = -1 + 2 * position.xy / bounds.zw;
     
-    color = 0;
+    half4 color = 0;
 
     for (float i=0; i<waves + 1; i++) {
         float freq = iChannel[int(i / waves * count)] * 7;
