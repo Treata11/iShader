@@ -82,7 +82,8 @@ static float CalculateSpecularLight(float3 normal, float3 lightDirection, float3
 
 // MARK: - Main
 
-[[ stitchable ]] half4 pulsatingFlesh(float2 position, half4 color, float4 bounds, 
+// FIXME: See Writhe.metal L134
+[[ stitchable ]] half4 pulsatingFlesh(float2 position, float4 bounds,
     float iTime, float2 iMouse
 ) {
     // Calculate the UVs of the fragment, correcting the aspect ratio in the process.
@@ -91,7 +92,7 @@ static float CalculateSpecularLight(float3 normal, float3 lightDirection, float3
     
     // Modify the UVs based on the mouse position.
     float2 mouseMovement = (iMouse / bounds.zw - 0.5);
-    uv += mouseMovement * clamp(0.2 / length(mouseMovement) + 0.2, 0., 1.);
+    uv += mouseMovement * clamp(0.2 / length(mouseMovement) + 0.2, 0.0, 1.0);
 
     // Calculate the base noise value from the FBM. This may initially be outside of the traditional 0-1 range of values.
     float noise = FBM(uv, iTime);
@@ -106,12 +107,16 @@ static float CalculateSpecularLight(float3 normal, float3 lightDirection, float3
     float3 lightSource = float3(0.76, 0.7, 0.);
     float3 lightDirection = normalize(currentPosition - lightSource);
     
+    /*
     // Calculate fluid noise values that give texture to the dark parts of the texture.
     if (USE_FLUID) {
-        float fluidNoise = pow(float(color.x), 5.5 * FLUID_STRENGTH) * 0.27;
-        
+        float fluidViscosity = 681.72;
+        float fluidNoiseAngle = originalNoise * 13.05 + iTime * 0.78;
+        float2 fluidOffset = float2(cos(fluidNoiseAngle) + originalNoise * 14.0, sin(fluidNoiseAngle) + iTime * 5.5) / fluidViscosity;
+        float fluidNoise = pow(texture(iChannel0, uv * 0.12 + fluidOffset).x, 5.5 * FLUID_STRENGTH) * 0.27;
         noise += fluidNoise * smoothstep(0.4, 0.0, noise);
     }
+     */
     
     // Calculate the normal of the current pixel based on the derivatives of the noise with respect to both spatial axes.
     float3 normal = normalize(float3(dfdx(noise), dfdy(noise), clamp(originalNoise * 0.01, 0., 1.)));
@@ -142,7 +147,7 @@ static float CalculateSpecularLight(float3 normal, float3 lightDirection, float3
         noise += brightness;
     
 //    half4 fragColor = half4(layer.sample(position));
-    color = 0;
+    half4 color = 0;
     
     // Add them all to the final color.
     color = half4(noise * DIFFUSE_COLOR.r, DIFFUSE_COLOR.g, noise * DIFFUSE_COLOR.b, 1.0);

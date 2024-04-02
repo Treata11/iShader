@@ -47,7 +47,7 @@ static float length2(float2 p) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 iris(float2 position, half4 color, float4 bounds,
+[[ stitchable ]] half4 iris(float2 position, float4 bounds, half4 irisColor,
     float iTime, half4 corneaEdgeHue
 ) {
     float2 p = (2*position-bounds.zw) / min(bounds.z, bounds.w);
@@ -60,7 +60,7 @@ static float length2(float2 p) {
     r *= 1 + 0.1*clamp(1-r, 0.0, 1.0)*sin(iTime*0.75);
 
     // iris (blue-green)
-    half3 col = color.rgb;
+    half3 col = irisColor.rgb;
     float f = fbm(5*p);
     col = mix(col, half3(0.2, 0.5, 0.4), f);
     

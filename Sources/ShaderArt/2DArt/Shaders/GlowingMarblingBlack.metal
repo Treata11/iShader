@@ -11,7 +11,7 @@
 using namespace metal;
 
 
-[[ stitchable ]] half4 glowingMarblingBlack(float2 position, half4 color, float4 bounds, 
+[[ stitchable ]] half4 glowingMarblingBlack(float2 position, float4 bounds, 
     float iTime, float2 iMouse
 ) {
 //    iMouse = max(iMouse, 1);

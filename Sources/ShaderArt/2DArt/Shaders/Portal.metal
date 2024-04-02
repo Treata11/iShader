@@ -25,8 +25,8 @@ using namespace metal;
 //const float line = 0.0065;
 //const float px = 0.0023;
 
-#define PORTAL_ORANGE half3(1.0, 0.5, 0.0)
-#define PORTAL_BLUE half3(0.0, 0.5, 1.0)
+#define PORTAL_ORANGE half3(1, 0.5, 0)
+#define PORTAL_BLUE half3(0, 0.5, 1)
 
 
 static float hash11(half p);
@@ -77,7 +77,7 @@ static float draw(float2 p, float px, float timer) {
 
 // MARK: - MAIN
 
-[[ stitchable ]] half4 portal(float2 position, half4 color, float4 bounds, float time) {
+[[ stitchable ]] half4 portal(float2 position, float4 bounds, float time) {
     const float px = 0.004;
     
     float2 aspect = min(bounds.z, bounds.w);

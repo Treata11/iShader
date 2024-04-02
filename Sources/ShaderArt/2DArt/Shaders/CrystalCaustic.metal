@@ -22,7 +22,7 @@ static float CV(half3 c, float2 uv, float4 bounds) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 crystalCaustic(float2 position, half4 color, float4 bounds, float time) {
+[[ stitchable ]] half4 crystalCaustic(float2 position, float4 bounds, float time) {
     half4 col = half4(0, 0, 0, 1);
     
     for (float i = 0; i < 60; i += 4.5) {

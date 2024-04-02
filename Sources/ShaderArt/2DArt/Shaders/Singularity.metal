@@ -68,9 +68,7 @@ static float2 normalizeLength(float2 noiseUV, float2 uv, float scale) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 singularity(
-   float2 position, half4 color, float4 bounds, float iTime
-) {
+[[ stitchable ]] half4 singularity(float2 position, float4 bounds, float iTime) {
     // Normalized pixel coordinates (from 0 to 1)
     float2 uv = (position*2 - bounds.zw) / min(bounds.z, bounds.w);
 

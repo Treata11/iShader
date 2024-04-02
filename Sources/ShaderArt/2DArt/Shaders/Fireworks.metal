@@ -94,9 +94,7 @@ static half3 Rainbow(half3 c, float iTime) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 fireWorks(
-   float2 position, half4 color, float4 bounds, float iTime
-) {
+[[ stitchable ]] half4 fireWorks(float2 position, float4 bounds, float iTime) {
     float2 uv = position / bounds.zw;
     uv.x -= 0.5;
     uv.x *= bounds.z/bounds.w;

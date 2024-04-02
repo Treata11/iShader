@@ -46,7 +46,7 @@ static float3 calcNormal( float3 p, float iTime ) {
 // MARK: - Main
 
 [[ stitchable ]] half4 lavaBlobs(
-   float2 position, half4 color, float4 bounds, float iTime
+   float2 position, float4 bounds, float iTime
 ) {
     float2 uv = position / bounds.zw;
     

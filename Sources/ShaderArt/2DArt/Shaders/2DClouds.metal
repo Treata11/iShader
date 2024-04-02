@@ -53,7 +53,7 @@ static float fbm(float2 n) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 clouds(float2 position, half4 color, float4 bounds, float iTime) {
+[[ stitchable ]] half4 clouds(float2 position, float4 bounds, float iTime) {
     float2 p = position / min(bounds.zw, bounds.wz);
     
     float2 aspect = float2(max(bounds.z/bounds.w, bounds.w/bounds.z), 1);

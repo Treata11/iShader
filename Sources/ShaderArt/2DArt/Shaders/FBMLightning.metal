@@ -59,7 +59,7 @@ static float fbm(float2 p, int octaveCount) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 fbmLightning(float2 position, half4 color, float4 bounds, float iTime) {
+[[ stitchable ]] half4 fbmLightning(float2 position, float4 bounds, half4 lightningColor, float iTime) {
     // Normalized pixel coordinates (from 0 to 1)
     float2 uv = position/bounds.zw;
     uv = 2 * uv - 1;
@@ -68,7 +68,7 @@ static float fbm(float2 p, int octaveCount) {
     uv += 2 * fbm(uv + 0.8*iTime, 10) - 1;
     
     float dist = abs(uv.x);
-    half3 col = color.rgb * pow(mix(0.0, 0.07, hash11(iTime)) / dist, 1);
+    half3 col = lightningColor.rgb * pow(mix(0.0, 0.07, hash11(iTime)) / dist, 1);
     
 //    col = pow(col, 1);
     // Output to screen

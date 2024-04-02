@@ -11,17 +11,18 @@
 using namespace metal;
 
 
-[[ stitchable ]] half4 beamDroplet(float2 position, half4 color, float4 bounds, float time) {
+[[ stitchable ]] half4 beamDroplet(float2 position, float4 bounds, float time) {
     float2 r = bounds.zw,
     p = position - 0.5*r;
 
     float l = length(p /= r.y);
     float z = time;
+    half4 color = 0;
     for (int i = 0; i < 4;) {
         z += 0.07;
         color[i++] = 0.01 / length(fract(position / r + p / l * (sin(z) + 1) * abs(sin(l * 9 - z - z))) - 0.5) / l;
     }
     
-    color.a = 1;
+//    color.a = 1;
     return color;
 }

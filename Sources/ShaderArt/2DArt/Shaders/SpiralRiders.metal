@@ -46,7 +46,7 @@ static half3 render(float2 p, float iTime) {
 // MARK: - Main
 
 [[ stitchable ]] half4 spiralRiders(
-   float2 position, half4 color, float4 bounds, float iTime
+   float2 position, float4 bounds, float iTime
 ) {
     float2 uv = (position - bounds.zw*0.5) / min(bounds.z, bounds.w);
     float2 d = float2(0, 0.5) / bounds.zw;

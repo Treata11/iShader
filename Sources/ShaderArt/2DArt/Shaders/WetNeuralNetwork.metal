@@ -18,7 +18,7 @@ static float2x2 rotate2D(float a) {
     return float2x2(c, s, -s, c); // Transposed matrix
 }
 
-[[ stitchable ]] half4 wetNeuralNetwork(float2 position, half4 color, float4 bounds, float iTime, float2 iMouse) {
+[[ stitchable ]] half4 wetNeuralNetwork(float2 position, float4 bounds, half4 color, float iTime, float2 iMouse) {
     // Normalized pixel coordinates (from 0 to 1)
     float2 uv = (position - 0.5*bounds.zw) / min(bounds.z, bounds.w);
     half3 col = 0;

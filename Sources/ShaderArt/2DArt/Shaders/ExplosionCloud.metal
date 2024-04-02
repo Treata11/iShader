@@ -60,14 +60,12 @@ static float fbm(float2 p, float iTime) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 explosionCloud(
-   float2 position, half4 color, float4 bounds, float iTime
-) {
+[[ stitchable ]] half4 explosionCloud(float2 position, float4 bounds, float iTime) {
     float2 uv = position / bounds.zw;
     uv.x *= bounds.z/bounds.w;
     uv *= 2.2;
     half _fbm = fbm(uv, iTime);
-    half3 col = half3(0.212, 0.08, 0.03)/max(_fbm, half(0.0001));
+    half3 col = half3(0.212, 0.08, 0.03)/max(_fbm, 0.0001h);
     col = pow(col, half3(1.5));
     
     return half4(col, 1);

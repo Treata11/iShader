@@ -24,11 +24,11 @@ static float2 Rot(float2 p, float th) {
 // MARK: - Main
 
 [[ stitchable ]] half4 starField(
-   float2 position, half4 color, float4 bounds, float iTime
+   float2 position, float4 bounds, float iTime
 ) {
     float2 uv = position/bounds.zw;
     float3 r = normalize(float3(Rot(uv - float2(0.5, 0.5 + 0.35*sin(0.157 * iTime)), 0.4 * sin(0.3 * iTime)), 1));
-    color = half4(0, 0, 0, 1);
+    half4 color = half4(0, 0, 0, 1);
     
     for (float a = 0.015; a < 0.3; a += 0.012) {
         float k = -a / r.y;

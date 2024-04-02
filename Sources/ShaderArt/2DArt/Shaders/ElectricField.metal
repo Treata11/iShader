@@ -23,7 +23,7 @@ static float2 domain(float2 uv, float s, float4 bounds);
 
 // MARK: - Main
 
-[[ stitchable ]] half4 electricField(float2 position, half4 color, float4 bounds, float iTime) {
+[[ stitchable ]] half4 electricField(float2 position, float4 bounds, float iTime) {
     float2 p = domain(position, 2.5, bounds);
        
     float electric_density = 0.9;

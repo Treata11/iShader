@@ -11,7 +11,7 @@
 using namespace metal;
 
 
-[[ stitchable ]] half4 turbulence(float2 position, half4 color, float4 bounds, 
+[[ stitchable ]] half4 turbulence(float2 position, float4 bounds, 
     float iTime, float2 iMouse
 ) {
     //Scaled pixel coordinates
@@ -22,7 +22,7 @@ using namespace metal;
         //Add a simple sine wave with an offset and animation
         p.x += sin(p.y + i + iTime*0.3);
         //Rotate and scale down
-        p *= half2x2(6, -8, 8, 6) / half(8);
+        p *= half2x2(6, -8, 8, 6) / 8.0h;
     }
     p += half2(iMouse/50);
     //Pick a color using the turbulent coordinates

@@ -10,14 +10,14 @@
 #include <metal_stdlib>
 using namespace metal;
 
-[[ stitchable ]] half4 hypnoticRipples(float2 position, half4 color, float4 bounds, float time) {
+[[ stitchable ]] half4 hypnoticRipples(float2 position, float4 bounds, float time) {
     const float2 center = 0.5;
     const float speed = 0.035;
     float invAr = bounds.w / bounds.z;
 
     float2 uv = position / bounds.zw;
         
-    half3 col = half4(half2(uv), 0.5+0.5*sin(time), 1).xyz;
+    half3 col = half4(half2(uv), 0.5 + 0.5*sin(time), 1).xyz;
    
     half3 texcol;
             

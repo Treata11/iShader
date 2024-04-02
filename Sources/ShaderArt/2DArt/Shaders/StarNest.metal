@@ -32,8 +32,10 @@ static float2x2 rot(float a) {
     return float2x2(c, s, -s, c); // Transposed matrix
 }
 
+// MARK: - Main
+
 /// Optimization required
-[[ stitchable ]] half4 starNest(float2 position, half4 color, float4 bounds, float iTime, float2 iMouse) {
+[[ stitchable ]] half4 starNest(float2 position, float4 bounds, float iTime, float2 iMouse) {
     //get coords and direction
     float2 uv = position / bounds.zw - 0.5;
     uv.y *= bounds.w / bounds.z;

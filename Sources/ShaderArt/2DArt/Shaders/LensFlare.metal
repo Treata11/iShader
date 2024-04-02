@@ -21,7 +21,7 @@ static float rnd(float2 p) {
 */
  
 static float rnd(float w) {
-    float f = fract(sin(w)*1000.);
+    float f = fract(sin(w)*1000);
  return f;
 }
 
@@ -31,7 +31,7 @@ static float regShape(float2 p, int N) {
     
     float a = atan(p.x / p.y) + 0.2;
     float b = 6.28319/float(N);
-    f = smoothstep(.5,.51, cos(floor(.5+a/b)*b-a)*length(p.xy));
+    f = smoothstep(0.5, 0.51, cos(floor(0.5 + a/b)*b-a) * length(p.xy));
     
     
     return f;
@@ -42,20 +42,20 @@ static half3 circle(float2 p, float size, float decay, half3 color, half3 color2
     //but I also use a pow function. pow function + sin function , from 0 and up, = a pulse, at least
     //if you return the max of that and 0.0.
     
-    float l = length(p + mouse*(dist*4.))+size/2.;
+    float l = length(p + mouse*(dist*4)) + size/2;
     
     //l2 is used in the rings as well...somehow...
     // Not used right now
 //    float l2 = length(p + mouse*(dist*4.))+size/3;
     
     ///these are circles, big, rings, and  tiny respectively
-    float c = max(00.01-pow(length(p + mouse*dist), size*1.4), 0.0)*50.;
-    float c1 = max(0.001-pow(l-0.3, 1./40.)+sin(l*30.), 0.0)*3.;
-    float c2 =  max(0.04/pow(length(p-mouse*dist/2. + 0.09)*1., 1.), 0.0)/20.;
-    float s = max(00.01-pow(regShape(p*5. + mouse*dist*5. + 0.9, 6) , 1.), 0.0)*5.;
+    float c = max(0.01-pow(length(p + mouse*dist), size*1.4), 0.0)*50.;
+    float c1 = max(0.001-pow(l-0.3, 1/40)+sin(l*30), 0.0)*3.;
+    float c2 =  max(0.04/pow(length(p-mouse*dist/2 + 0.09)*1., 1.), 0.0)/20.;
+    float s = max(0.01-pow(regShape(p*5 + mouse*dist*5 + 0.9, 6) , 1.), 0.0)*5.;
     
        color = 0.5+0.5*sin(color);
-    color = cos(half3(0.44, .24, .2)*8. + dist*4.)*0.5+.5;
+    color = cos(half3(0.44, 0.24, 0.2)*8 + dist*4)*0.5 + 0.5;
     half3 f = c*color ;
     f += c1*color;
     
@@ -77,7 +77,7 @@ static float sun(float2 p, float2 mouse) {
  
 // MARK: - Main
 
-[[ stitchable ]] half4 lensFlare(float2 position, half4 color, float4 bounds,
+[[ stitchable ]] half4 lensFlare(float2 position, float4 bounds,
     float iTime, float2 iMouse
 ) {
     float aspect = min(bounds.z/bounds.w, bounds.w/bounds.z);

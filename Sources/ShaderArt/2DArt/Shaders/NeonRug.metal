@@ -24,7 +24,7 @@ static half3 palette(float t) {
 // MARK: - Main
 
 // https://www.shadertoy.com/view/mtyGWy
-[[ stitchable ]] half4 neonRug(float2 position, half4 color, float4 bounds, 
+[[ stitchable ]] half4 neonRug(float2 position, float4 bounds, 
     float time, float neonEffect
 ) {
     float2 uv = (position * 2 - bounds.zw) / min(bounds.z, bounds.w);

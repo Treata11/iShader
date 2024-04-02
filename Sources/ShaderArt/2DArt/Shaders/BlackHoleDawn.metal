@@ -69,7 +69,7 @@ static float2 r(float2 p, float a) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 blackHoleDawn(float2 position, half4 color, float4 bounds, float iTime) {
+[[ stitchable ]] half4 blackHoleDawn(float2 position, float4 bounds, half4 color, float iTime) {
     float2 uv = position/bounds.zw;
     float2 p = (2*position - bounds.zw) / min(bounds.z, bounds.w);
     

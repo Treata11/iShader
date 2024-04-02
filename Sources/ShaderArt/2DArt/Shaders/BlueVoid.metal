@@ -32,7 +32,7 @@ static half field(float3 p, float iTime) {
 // MARK: - Main
 
 [[ stitchable ]] half4 blueVoid(
-    float2 position, half4 color, float4 bounds,
+    float2 position, float4 bounds,
     float iTime, float2 iMouse
 ) {
     half2 uv = half2( 2*position / bounds.zw - 1 );

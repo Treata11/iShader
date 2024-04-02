@@ -30,7 +30,7 @@ using namespace metal;
 
 
 // FIXME: It's cheap.
-half4 mainVR(half4 fragColor, float2 fragCoord, half3 from, float3 rd) {
+static half4 mainVR(half4 fragColor, float2 fragCoord, half3 from, float3 rd) {
     //get coords and direction
     half3 dir = half3(rd);
 
@@ -93,7 +93,7 @@ static half3 hsv(half h, half s, half v) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 cosmicBlood(float2 position, half4 color, float4 bounds, float iTime) {
+[[ stitchable ]] half4 cosmicBlood(float2 position, float4 bounds, float iTime) {
     float2 uv = position/bounds.zw;
     uv = uv*2 - 1;
 
@@ -156,7 +156,7 @@ static half3 hsv(half h, half s, half v) {
     half3 from = half3(1, 0.5, 0.5) + dc;
     from += half3(iTime*2, iTime, -2);
     
-    color = mainVR(color, position, from, dir);
+    half4 color = mainVR(0, position, from, dir);
     
     color *= half4(dc.x, dc.y, dc.z, 1);
     return color;

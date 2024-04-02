@@ -13,7 +13,7 @@ using namespace metal;
 
 #define tri(t, scale, shift) ( abs(t*2 - 1) - shift ) * (scale)
 
-[[ stitchable ]] half4 retroSun(float2 position, half4 color, float4 bounds, float iTime) {
+[[ stitchable ]] half4 retroSun(float2 position, float4 bounds, float iTime) {
     float2 R = bounds.zw,
     uv = (position - 0.5 * R) / min(R.x, R.y) + 0.5;
     // Flip Y coordinate to have the bottom-to-top convention

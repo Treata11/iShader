@@ -10,373 +10,489 @@
 
 import SwiftUI
 
-public extension View {
+// MARK: - Hypnotic Ripples
+public struct hypnoticRipples: ShapeStyle, View, Sendable {
+    var time: TimeInterval
     
-    // MARK: - Hypnotic Ripples
-    func hypnoticRipples(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.hypnoticRipples(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.hypnoticRipples(
+            .boundingRect,
+            .float(time)
         )
     }
-    
-    // MARK: - Crystal Caustic
-    // TODO: Add gestures?
-    func crystalCaustic(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.crystalCaustic(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Beam Droplet
-    func beamDroplet(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.beamDroplet(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Sine Waves
-    func sineWaves(seconds: TimeInterval, waveCount: Int = 7) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.sineWaves(
-                .boundingRect,
-                .float(seconds),
-                .float(Float(waveCount))
-            )
-        )
-    }
-    
-    // MARK: - Portal
-    /// Worth investing in
-    func portal(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.portal(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Neon Rug
-    // TODO: Add Gesture? zoom-in/out?
-    func neonRug(seconds: TimeInterval, neonEffect: Bool = true) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.neonRug(
-                .boundingRect,
-                .float(seconds),
-                .float(neonEffect ? 1 : 0)
-            )
-        )
-    }
-    
-    // MARK: - Star Nest
-    /**
-     
-     > Supports Gesture.
-     */
-    func starNest(seconds: TimeInterval, translation: CGPoint = .zero) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.starNest(
-                .boundingRect,
-                .float(seconds),
-                .float2(translation)
-            )
-        )
-    }
-    
-    // MARK: - Blue Void
-    /// Also known as `simplicity`
-    func blueVoid(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.blueVoid(
-                .boundingRect,
-                .float(seconds),
-                .float2(touchLocation)
-            )
-        )
-    }
-    
-    // MARK: - Spiral Riders
-    /// Extremely resource intensive
-    func spiralRiders(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.spiralRiders(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Black Hole Dawn
-    func blackHoleDawn(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.blackHoleDawn(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Cosmic Blood
-    // TODO: Room for optimization?
-    func cosmicBlood(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.cosmicBlood(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Pulsating Flesh
-    // FIXME: Looks pixelated
-    // The results look a bit noisy that may be caused because of redundant usage of halves instead of floats.
-    /**
-     
-     > Supports Gestures
-     */
-    func pulsatingFlesh(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
-        self.colorEffect(
-            ShaderArtLibrary.pulsatingFlesh(
-                .boundingRect,
-                .float(seconds),
-                .float2(touchLocation)
-            )
-        )
-    }
-    
-    // MARK: - Clouds
-    // TODO: Introduce gestures
-    func clouds(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.clouds(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Base Warp
-    /**
-     
-     > Supports Gestures
-     */
-    func baseWarp(seconds: TimeInterval, gestureTranslation: CGPoint = .zero) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.baseWarp(
-                .boundingRect,
-                .float(seconds),
-                .float2(gestureTranslation)
-            )
-        )
-    }
-    
-    // MARK: - Lens Flare
-    /**
-     
-     > Supports Gestures
-     */
-    func lensFlare(seconds: TimeInterval, gestureTranslation: CGPoint = .zero) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.lensFlare(
-                .boundingRect,
-                .float(seconds),
-                .float2(gestureTranslation)
-            )
-        )
-    }
-    
-    // MARK: - Iris
-    /// The `BeautiPi`'s logo
-    func iris(seconds: TimeInterval, corneaEdgeHue: Color = .init(red: 0.9, green: 0.6, blue: 0.2)) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.iris(
-                .boundingRect,
-                .float(seconds),
-                // yellow towards center
-                .color(corneaEdgeHue)
-            )
-        )
-    }
-    
-    // MARK: - Retro Sun
-    func retroSun(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.retroSun(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
-    
-    // MARK: - Turbulence
-    // TODO: Introduce better gesture effects ...
-    /**
-     
-     > Supports Gesture.
-     */
-    func turbulence(seconds: TimeInterval, translation: CGPoint = .zero) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.turbulence(
-                .boundingRect,
-                .float(seconds),
-                .float2(translation)
-            )
-        )
-    }
-    
-    // MARK: - Lava Blobs
-    /// Extremely resource intensive
-    func lavaBlobs(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.lavaBlobs(
-                .boundingRect,
-                .float(seconds)
-            )
-        )
-    }
+}
 
-    // MARK: - TM Gyroids
-    func tmGyroids(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.tmGyroids(
-                .boundingRect,
-                .float(seconds)
-            )
+// MARK: - Crystal Caustic
+// TODO: Add gestures?
+public struct CrystalCaustic: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.crystalCaustic(
+            .boundingRect,
+            .float(time)
         )
     }
+}
+
+// MARK: - Beam Droplet
+public struct BeamDroplet: ShapeStyle, View, Sendable {
+    var time: TimeInterval
     
-    // MARK: - Fire Works
-    // TODO: Fireworks on the touched position
-    func fireWorks(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.fireWorks(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.beamDroplet(
+            .boundingRect,
+            .float(time)
         )
     }
+}
+
+// MARK: - Sine Waves
+public struct SineWaves: ShapeStyle, View, Sendable {
+    var relativeColor = Color(red: 0.2, green: 0.2, blue: 0.3)
+    var time: TimeInterval
+    var waveCount: Int = 7
     
-    // MARK: - Explosion Cloud
-    /// worth investing in
-    func explosionCloud(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.explosionCloud(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.sineWaves(
+            .boundingRect,
+            .color(relativeColor),
+            .float(time),
+            .float(Float(waveCount))
         )
     }
+}
+
+// MARK: - Portal
+// TODO: Two input colors instead of the hardcoded Blue & Orange
+// Worth investing in
+public struct Portal: ShapeStyle, View, Sendable {
+    var time: TimeInterval
     
-    // MARK: - Mod Fan
-    /// Looks great as a WallPaper
-    func modFan(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.modFan(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.portal(
+            .boundingRect,
+            .float(time)
         )
     }
+}
+
+// MARK: - Neon Rug
+// TODO: Add Gesture? zoom-in/out?
+public struct NeonRug: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    var neonEffect = true
     
-    // MARK: - Star Field
-    // TODO: Impelemnt the GPU sound
-    func starField(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.starField(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.neonRug(
+            .boundingRect,
+            .float(time),
+            .float(neonEffect ? 1 : 0)
         )
     }
+}
+
+// MARK: - Star Nest
+/**
+ 
+ > Supports Gesture.
+ */
+public struct StarNest: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
     
-    // MARK: - Singularity
-    func singularity(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.singularity(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.starNest(
+            .boundingRect,
+            .float(time),
+            .float2(location)
         )
     }
+}
+
+// MARK: - Blue Void
+/**
+ 
+ Also known as `simplicity`
+ > Supports Gesture.
+ */
+public struct BlueVoid: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
     
-    // MARK: - Glowing Marbling Black
-    /**
-     
-     > Supports Gesture.
-     */
-    func glowingMarblingBlack(seconds: TimeInterval, translation: CGSize = .init(width: 1, height: 1)) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.glowingMarblingBlack(
-                .boundingRect,
-                .float(seconds),
-                .float2(translation)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.blueVoid(
+            .boundingRect,
+            .float(time),
+            .float2(location)
         )
     }
+}
+
+// MARK: - Spiral Riders
+/// Extremely resource intensive
+public struct SpiralRiders: ShapeStyle, View, Sendable {
+    var time: TimeInterval
     
-    // MARK: - Electric Field
-    // TODO: Introduce Touch compatibility
-    func electricField(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.electricField(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.spiralRiders(
+            .boundingRect,
+            .float(time)
         )
     }
+}
+
+// MARK: - Black Hole Dawn
+public struct BlackHoleDawn: ShapeStyle, View, Sendable {
+    /// Means that the result color in the shader, might not precisely match the given color.
+    var relativeColor = Color(red: 1, green: 0.025, blue: 0)
+    var time: TimeInterval
     
-    // MARK: - FBM Lightning
-    // Worth investing in.
-    func fbmLightning(seconds: TimeInterval) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.fbmLightning(
-                .boundingRect,
-                .float(seconds)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.blackHoleDawn(
+            .boundingRect,
+            .color(relativeColor),
+            .float(time)
         )
     }
+}
+
+// MARK: - Cosmic Blood
+// TODO: Room for optimization?
+public struct CosmicBlood: ShapeStyle, View, Sendable {
+    var time: TimeInterval
     
-    // MARK: - Wet Neural Network
-    // TODO: Potential for Audio Visualization
-    // TODO: Better feedback for gestures?
-    /**
-     
-     > Supports Gesture.
-     */
-    func wetNeuralNetwork(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.wetNeuralNetwork(
-                .boundingRect,
-                .float(seconds),
-                .float2(touchLocation)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.cosmicBlood(
+            .boundingRect,
+            .float(time)
         )
     }
+}
+
+// MARK: - Pulsating Flesh
+
+// FIXME: Looks pixelated on every platfrom aside from visionOS & tvOS
+/**
+ 
+ > Supports Gesture.
+ */
+public struct PulsatingFlesh: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
     
-    // MARK: - Lightning
-    // TODO: Do sth with the gestures
-    /**
-     
-     > Supports Gesture.
-     > Very similar to `FBMLightning` but not as efficient.
-     */
-    func lightning01(seconds: TimeInterval, touchLocation: CGPoint = .zero) -> some View {
-        return self.colorEffect(
-            ShaderArtLibrary.lightning01(
-                .boundingRect,
-                .float(seconds),
-                .float2(touchLocation)
-            )
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.pulsatingFlesh(
+            .boundingRect,
+            .float(time),
+            .float2(location)
         )
     }
+}
+
+// MARK: - Writhe
+
+// FIXME: Looks pixelated on every platfrom aside from visionOS & tvOS
+/**
+ 
+ > Supports Gesture.
+ */
+public struct Writhe: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
     
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.writhe(
+            .boundingRect,
+            .float(time),
+            .float2(location)
+        )
+    }
+}
+
+// MARK: - Clouds
+// TODO: Introduce gestures
+public struct Clouds: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.clouds(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Base Warp
+/**
+ 
+ > Supports Gesture.
+ */
+public struct BaseWarp: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.baseWarp(
+            .boundingRect,
+            .float(time),
+            .float2(location)
+        )
+    }
+}
+
+// MARK: - Lens Flare
+/**
+ 
+ > Supports Gesture.
+ */
+public struct LensFlare: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.lensFlare(
+            .boundingRect,
+            .float(time),
+            .float2(location)
+        )
+    }
+}
+
+// MARK: - Iris
+/// The `BeautiPi`'s logo
+public struct Iris: ShapeStyle, View, Sendable {
+    var irisColor = Color(red: 0, green: 0.3, blue: 0.4)
+    var time: TimeInterval
+    var corneaEdgeHue: Color = .init(red: 0.9, green: 0.6, blue: 0.2)
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.iris(
+            .boundingRect,
+            .color(irisColor),
+            .float(time),
+            // yellow towards center
+            .color(corneaEdgeHue)
+        )
+    }
+}
+
+// MARK: - Retro Sun
+public struct RetroSun: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.retroSun(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Turbulence
+// TODO: Introduce better gesture effects ...
+/**
+ 
+ > Supports Gesture.
+ */
+public struct Turbulence: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.turbulence(
+            .boundingRect,
+            .float(time),
+            .float2(location)
+        )
+    }
+}
+
+// MARK: - Lava Blobs
+/// Extremely resource intensive
+public struct LavaBlobs: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.lavaBlobs(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - TM Gyroids
+public struct TMGyroids: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.tmGyroids(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Fire Works
+// TODO: Fireworks on the touched position
+public struct FireWorks: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.fireWorks(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Explosion Cloud
+// worth investing in
+public struct ExplosionCloud: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.explosionCloud(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Mod Fan
+/// Looks great as a WallPaper
+public struct ModFan: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.modFan(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Star Field
+// TODO: Impelement the GPU sound
+public struct StarField: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.starField(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Singularity
+public struct Singularity: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.singularity(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Glowing Marbling Black
+/**
+ 
+ > Supports Gesture.
+ */
+public struct GlowingMarblingBlack: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.glowingMarblingBlack(
+            .boundingRect,
+            .float(time),
+            .float2(location)
+        )
+    }
+}
+
+// MARK: - Electric Field
+// TODO: Introduce Touch compatibility
+public struct ElectricField: ShapeStyle, View, Sendable {
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.electricField(
+            .boundingRect,
+            .float(time)
+        )
+    }
+}
+
+// MARK: - FBM Lightning
+// Worth investing in.
+public struct FBMLightning: ShapeStyle, View, Sendable {
+    var lightningColor = Color(red: 0.2, green: 0.3, blue: 0.8)
+    var time: TimeInterval
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.fbmLightning(
+            .boundingRect,
+            .color(lightningColor),
+            .float(time)
+        )
+    }
+}
+
+// MARK: - Wet Neural Network
+// TODO: Potential for Audio Visualization
+// TODO: Better feedback for gestures?
+/**
+ 
+ > Supports Gesture.
+ */
+public struct WetNeuralNetwork: ShapeStyle, View, Sendable {
+    var color = Color(red: 0.25, green: 0.5, blue: 1)
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.wetNeuralNetwork(
+            .boundingRect,
+            .color(color),
+            .float(time),
+            .float2(location)
+        )
+    }
+}
+
+// MARK: - Lightning
+// TODO: Do sth with the gestures
+/**
+ 
+ > Supports Gesture.
+ > Very similar to `FBMLightning` but not as efficient.
+ */
+public struct Lightning01: ShapeStyle, View, Sendable {
+    var lightningColor: Color = .init(red: 1.2, green: 0.2, blue: 0.3)
+    var time: TimeInterval
+    /// The touch location
+    var location: CGPoint
+    
+    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        ShaderLibrary.default.lightning01(
+            .boundingRect,
+            .color(lightningColor),
+            .float(time),
+            .float2(location)
+        )
+    }
 }

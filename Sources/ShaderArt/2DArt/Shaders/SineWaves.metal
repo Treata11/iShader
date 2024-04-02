@@ -21,7 +21,7 @@ static half4 Line(float2 uv, float speed, float height, half3 col, float time) {
     );
 }
 
-[[ stitchable ]] half4 sineWaves(float2 position, half4 color, float4 bounds, 
+[[ stitchable ]] half4 sineWaves(float2 position, float4 bounds, half4 color,
     float time, float count
 ) {
     float2 uv = (position - .5 * bounds.zw) / min(bounds.z, bounds.w);

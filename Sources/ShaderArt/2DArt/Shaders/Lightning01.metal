@@ -58,11 +58,11 @@ static half fbm(float2 uv, int octaves) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 lightning01(float2 position, half4 color, float4 bounds,
+[[ stitchable ]] half4 lightning01(float2 position, float4 bounds, half4 lightningColor,
     float iTime, float2 iMouse
 ) {
     float2 uv = (position - bounds.zw/2) / bounds.w;
     uv += fbm(uv + iTime, 20);
     
-    return half4(color.xyz * mix(0.0, 0.05, hash21(half2(iTime))) / abs(uv.x), 1);
+    return half4(lightningColor.xyz * mix(0.0, 0.05, hash21(half2(iTime))) / abs(uv.x), 1);
 }

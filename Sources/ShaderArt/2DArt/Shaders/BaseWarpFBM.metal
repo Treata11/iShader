@@ -68,7 +68,7 @@ static float func(float2 q, float4 ron, float iTime, float2 iMouse) {
 
 // MARK: - Main
 
-[[ stitchable ]] half4 baseWarp(float2 position, half4 color, float4 bounds, 
+[[ stitchable ]] half4 baseWarp(float2 position, float4 bounds, 
     float iTime, float2 iMouse
 ) {
     float2 p = (2*position-bounds.zw) / min(bounds.z, bounds.w);
