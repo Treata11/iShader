@@ -11,11 +11,13 @@
 import SwiftUI
 
 // MARK: - Hypnotic Ripples
-public struct hypnoticRipples: ShapeStyle, View, Sendable {
+public struct HypnoticRipples: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.hypnoticRipples(
+        ShaderArtLibrary.hypnoticRipples(
             .boundingRect,
             .float(time)
         )
@@ -27,8 +29,10 @@ public struct hypnoticRipples: ShapeStyle, View, Sendable {
 public struct CrystalCaustic: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.crystalCaustic(
+        ShaderArtLibrary.crystalCaustic(
             .boundingRect,
             .float(time)
         )
@@ -39,10 +43,13 @@ public struct CrystalCaustic: ShapeStyle, View, Sendable {
 public struct BeamDroplet: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.beamDroplet(
+        ShaderArtLibrary.beamDroplet(
             .boundingRect,
-            .float(time)
+            .float(time),
+            .float(environment.colorScheme == .dark ? 1 : 0)
         )
     }
 }
@@ -53,8 +60,14 @@ public struct SineWaves: ShapeStyle, View, Sendable {
     var time: TimeInterval
     var waveCount: Int = 7
     
+    public init(relativeColor: Color = Color(red: 0.2, green: 0.2, blue: 0.3), time: TimeInterval, waveCount: Int = 7) {
+        self.relativeColor = relativeColor
+        self.time = time
+        self.waveCount = waveCount
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.sineWaves(
+        ShaderArtLibrary.sineWaves(
             .boundingRect,
             .color(relativeColor),
             .float(time),
@@ -69,8 +82,10 @@ public struct SineWaves: ShapeStyle, View, Sendable {
 public struct Portal: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.portal(
+        ShaderArtLibrary.portal(
             .boundingRect,
             .float(time)
         )
@@ -83,8 +98,13 @@ public struct NeonRug: ShapeStyle, View, Sendable {
     var time: TimeInterval
     var neonEffect = true
     
+    public init(time: TimeInterval, neonEffect: Bool = true) {
+        self.time = time
+        self.neonEffect = neonEffect
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.neonRug(
+        ShaderArtLibrary.neonRug(
             .boundingRect,
             .float(time),
             .float(neonEffect ? 1 : 0)
@@ -102,8 +122,13 @@ public struct StarNest: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.starNest(
+        ShaderArtLibrary.starNest(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -122,8 +147,13 @@ public struct BlueVoid: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.blueVoid(
+        ShaderArtLibrary.blueVoid(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -136,8 +166,10 @@ public struct BlueVoid: ShapeStyle, View, Sendable {
 public struct SpiralRiders: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.spiralRiders(
+        ShaderArtLibrary.spiralRiders(
             .boundingRect,
             .float(time)
         )
@@ -150,8 +182,13 @@ public struct BlackHoleDawn: ShapeStyle, View, Sendable {
     var relativeColor = Color(red: 1, green: 0.025, blue: 0)
     var time: TimeInterval
     
+    public init(relativeColor: SwiftUI.Color = Color(red: 1, green: 0.025, blue: 0), time: TimeInterval) {
+        self.relativeColor = relativeColor
+        self.time = time
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.blackHoleDawn(
+        ShaderArtLibrary.blackHoleDawn(
             .boundingRect,
             .color(relativeColor),
             .float(time)
@@ -164,8 +201,10 @@ public struct BlackHoleDawn: ShapeStyle, View, Sendable {
 public struct CosmicBlood: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.cosmicBlood(
+        ShaderArtLibrary.cosmicBlood(
             .boundingRect,
             .float(time)
         )
@@ -184,8 +223,13 @@ public struct PulsatingFlesh: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.pulsatingFlesh(
+        ShaderArtLibrary.pulsatingFlesh(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -205,8 +249,13 @@ public struct Writhe: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.writhe(
+        ShaderArtLibrary.writhe(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -219,8 +268,10 @@ public struct Writhe: ShapeStyle, View, Sendable {
 public struct Clouds: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.clouds(
+        ShaderArtLibrary.clouds(
             .boundingRect,
             .float(time)
         )
@@ -237,8 +288,13 @@ public struct BaseWarp: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.baseWarp(
+        ShaderArtLibrary.baseWarp(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -256,8 +312,13 @@ public struct LensFlare: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.lensFlare(
+        ShaderArtLibrary.lensFlare(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -272,8 +333,18 @@ public struct Iris: ShapeStyle, View, Sendable {
     var time: TimeInterval
     var corneaEdgeHue: Color = .init(red: 0.9, green: 0.6, blue: 0.2)
     
+    public init(
+        irisColor: Color = Color(red: 0, green: 0.3, blue: 0.4),
+        time: TimeInterval,
+        corneaEdgeHue: Color = .init(red: 0.9, green: 0.6, blue: 0.2)
+    ) {
+        self.irisColor = irisColor
+        self.time = time
+        self.corneaEdgeHue = corneaEdgeHue
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.iris(
+        ShaderArtLibrary.iris(
             .boundingRect,
             .color(irisColor),
             .float(time),
@@ -287,8 +358,10 @@ public struct Iris: ShapeStyle, View, Sendable {
 public struct RetroSun: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.retroSun(
+        ShaderArtLibrary.retroSun(
             .boundingRect,
             .float(time)
         )
@@ -306,8 +379,13 @@ public struct Turbulence: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.turbulence(
+        ShaderArtLibrary.turbulence(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -320,8 +398,10 @@ public struct Turbulence: ShapeStyle, View, Sendable {
 public struct LavaBlobs: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.lavaBlobs(
+        ShaderArtLibrary.lavaBlobs(
             .boundingRect,
             .float(time)
         )
@@ -332,8 +412,10 @@ public struct LavaBlobs: ShapeStyle, View, Sendable {
 public struct TMGyroids: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.tmGyroids(
+        ShaderArtLibrary.tmGyroids(
             .boundingRect,
             .float(time)
         )
@@ -345,8 +427,10 @@ public struct TMGyroids: ShapeStyle, View, Sendable {
 public struct FireWorks: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.fireWorks(
+        ShaderArtLibrary.fireWorks(
             .boundingRect,
             .float(time)
         )
@@ -358,8 +442,10 @@ public struct FireWorks: ShapeStyle, View, Sendable {
 public struct ExplosionCloud: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.explosionCloud(
+        ShaderArtLibrary.explosionCloud(
             .boundingRect,
             .float(time)
         )
@@ -371,8 +457,10 @@ public struct ExplosionCloud: ShapeStyle, View, Sendable {
 public struct ModFan: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.modFan(
+        ShaderArtLibrary.modFan(
             .boundingRect,
             .float(time)
         )
@@ -384,8 +472,10 @@ public struct ModFan: ShapeStyle, View, Sendable {
 public struct StarField: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.starField(
+        ShaderArtLibrary.starField(
             .boundingRect,
             .float(time)
         )
@@ -396,8 +486,10 @@ public struct StarField: ShapeStyle, View, Sendable {
 public struct Singularity: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.singularity(
+        ShaderArtLibrary.singularity(
             .boundingRect,
             .float(time)
         )
@@ -414,8 +506,13 @@ public struct GlowingMarblingBlack: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(time: TimeInterval, location: CGPoint) {
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.glowingMarblingBlack(
+        ShaderArtLibrary.glowingMarblingBlack(
             .boundingRect,
             .float(time),
             .float2(location)
@@ -428,8 +525,10 @@ public struct GlowingMarblingBlack: ShapeStyle, View, Sendable {
 public struct ElectricField: ShapeStyle, View, Sendable {
     var time: TimeInterval
     
+    public init(time: TimeInterval) { self.time = time }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.electricField(
+        ShaderArtLibrary.electricField(
             .boundingRect,
             .float(time)
         )
@@ -442,8 +541,13 @@ public struct FBMLightning: ShapeStyle, View, Sendable {
     var lightningColor = Color(red: 0.2, green: 0.3, blue: 0.8)
     var time: TimeInterval
     
+    public init(lightningColor: Color = .init(red: 0.2, green: 0.3, blue: 0.8), time: TimeInterval) {
+        self.lightningColor = lightningColor
+        self.time = time
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.fbmLightning(
+        ShaderArtLibrary.fbmLightning(
             .boundingRect,
             .color(lightningColor),
             .float(time)
@@ -464,8 +568,16 @@ public struct WetNeuralNetwork: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(color: Color = Color(red: 0.25, green: 0.5, blue: 1),
+                time: TimeInterval, location: CGPoint
+    ) {
+        self.color = color
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.wetNeuralNetwork(
+        ShaderArtLibrary.wetNeuralNetwork(
             .boundingRect,
             .color(color),
             .float(time),
@@ -474,7 +586,7 @@ public struct WetNeuralNetwork: ShapeStyle, View, Sendable {
     }
 }
 
-// MARK: - Lightning
+// MARK: - Lightning01
 // TODO: Do sth with the gestures
 /**
  
@@ -487,8 +599,16 @@ public struct Lightning01: ShapeStyle, View, Sendable {
     /// The touch location
     var location: CGPoint
     
+    public init(lightningColor: Color = .init(red: 1.2, green: 0.2, blue: 0.3),
+                time: TimeInterval, location: CGPoint
+    ) {
+        self.lightningColor = lightningColor
+        self.time = time
+        self.location = location
+    }
+    
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        ShaderLibrary.default.lightning01(
+        ShaderArtLibrary.lightning01(
             .boundingRect,
             .color(lightningColor),
             .float(time),

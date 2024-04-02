@@ -44,8 +44,9 @@ static float2x2 rot(float a) {
     float time = iTime * speed + 0.25;
 
     //mouse rotation
-    float a1 = 0.5+iMouse.x / bounds.z*0.2;
-    float a2 = 0.8+iMouse.y / bounds.w*0.2;
+    float a1 = 0.5 + iMouse.x / bounds.z*0.2;
+    // Flip Y coordinate of iMouse
+    float a2 = 0.8 - iMouse.y / bounds.w*0.2;
 
     float2 dirRot1 = dir.xz * rot(a1);
     float2 dirRot2 = dir.xy * rot(a2);

@@ -11,7 +11,9 @@
 using namespace metal;
 
 
-[[ stitchable ]] half4 beamDroplet(float2 position, float4 bounds, float time) {
+[[ stitchable ]] half4 beamDroplet(float2 position, float4 bounds, 
+    float time, float darkMode
+) {
     float2 r = bounds.zw,
     p = position - 0.5*r;
 
@@ -23,6 +25,6 @@ using namespace metal;
         color[i++] = 0.01 / length(fract(position / r + p / l * (sin(z) + 1) * abs(sin(l * 9 - z - z))) - 0.5) / l;
     }
     
-//    color.a = 1;
+    if (darkMode == 1) { color.a = 1; }
     return color;
 }
