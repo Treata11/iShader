@@ -142,8 +142,8 @@ public struct UniverseWithin: ShapeStyle, View, Sendable {
         AudioVisualizerLibrary.universeWithin(
             .boundingRect,
             .float(time),
-            .floatArray(fft),
-            .float2(location)
+            .float2(location),
+            .floatArray(fft)
         )
     }
 }
@@ -187,8 +187,8 @@ public struct RoundAudioSpecturm: ShapeStyle, View, Sendable {
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
         AudioVisualizerLibrary.roundAudioSpecturm(
             .boundingRect,
-            .floatArray(fft),
             .color(backgroundColor),
+            .floatArray(fft),
             .float(Float(rayCount))
         )
     }

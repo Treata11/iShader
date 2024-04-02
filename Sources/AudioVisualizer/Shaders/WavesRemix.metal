@@ -44,7 +44,7 @@ static float getWeight(float f,
         uv.y += (0.2 * sin(uv.x + i/7 - iTime * 0.6));
         
 //        float fft = (texture(iChannel0, float2(uvTrue.x, 1)).x - 0.5);
-        float fft = iChannel[ int( count * uvTrue.x ) ] - 0.5;
+        float fft = iChannel[ int( count * uvTrue.x ) ] / 50 - 0.5;
         
         float Y = uv.y + getWeight(squared(i) * 20, iChannel, count) * fft;
         
