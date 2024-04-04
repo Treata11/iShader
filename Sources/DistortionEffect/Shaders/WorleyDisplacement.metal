@@ -1,10 +1,11 @@
-//
-//  WorleyDisplacement.metal
-//  MetalShaders
-//
-//  Created by Treata Norouzi on 4/4/24.
-//
-// https://www.shadertoy.com/view/4ddXR8
+/*
+ WorleyDisplacement.metal
+ iShader
+
+ Created by Treata Norouzi on 4/4/24.
+
+ Based on: https://www.shadertoy.com/view/4ddXR8
+*/
 
 #include <metal_stdlib>
 using namespace metal;

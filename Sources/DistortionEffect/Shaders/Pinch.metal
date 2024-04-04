@@ -1,10 +1,11 @@
-//
-//  Pinch.metal
-//  MetalShaders
-//
-//  Created by Treata Norouzi on 4/4/24.
-//
-// https://www.shadertoy.com/view/XlSGRw
+/*
+ Pinch.metal
+ iShader
+
+ Created by Treata Norouzi on 4/4/24.
+
+ Based on: https://www.shadertoy.com/view/XlSGRw
+*/
 
 #include <metal_stdlib>
 using namespace metal;

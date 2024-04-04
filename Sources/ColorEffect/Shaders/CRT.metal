@@ -1,6 +1,6 @@
 /*
  CRT.metal
- MetalShaders
+ iShader
 
  Created by Treata Norouzi on 4/4/24.
 

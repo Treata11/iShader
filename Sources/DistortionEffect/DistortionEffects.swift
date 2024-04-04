@@ -2,7 +2,6 @@
  DistortionEffects.swift
  iShader
 
-
  Created by Treata Norouzi on 3/30/24.
 */
 
