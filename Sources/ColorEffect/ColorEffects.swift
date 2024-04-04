@@ -105,7 +105,57 @@ public extension View {
      */
     func infrared(isEnabled: Bool = true) -> some View {
         return self.colorEffect(
-            ShaderLibrary.infrared(),
+            ColorEffectLibrary.infrared(),
+            isEnabled: isEnabled
+        )
+    }
+    
+    // MARK: - CRT
+    
+    func crt(xPass: Bool = true, yPass: Bool = true) -> some View {
+        return self.colorEffect(
+            ColorEffectLibrary.crt(
+                .boundingRect,
+                .float(xPass ? 1 : 0),
+                .float(yPass ? 1 : 0)
+            )
+        )
+    }
+    
+    // MARK: - Lightbulb Screen
+    
+    func lightbulbScreen(bulbCount: Int = 32) -> some View {
+        return self.colorEffect(
+            ColorEffectLibrary.lightbulbScreen(
+                .boundingRect,
+                .float(Float(bulbCount))
+            )
+        )
+    }
+    
+    // MARK: - Film Grain
+    
+    func filmGrain(time: TimeInterval, strength: Float = 32, fineGrain: Bool = true, isEnabled: Bool = true) -> some View {
+        return self.colorEffect(
+            ColorEffectLibrary.filmGrain(
+                .boundingRect,
+                .float(time),
+                .float(strength),
+                .float(fineGrain ? 1 : 0)
+            ),
+            isEnabled: isEnabled
+        )
+    }
+    
+    // MARK: - Tileable Water Caustic
+    
+    func tileableWaterCaustic(time: TimeInterval, showTiling: Bool = false, isEnabled: Bool = true) -> some View {
+        return self.colorEffect(
+            ColorEffectLibrary.tileableWaterCaustic(
+                .boundingRect,
+                .float(time),
+                .float(showTiling ? 1 : 0)
+            ),
             isEnabled: isEnabled
         )
     }
