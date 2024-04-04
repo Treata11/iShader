@@ -28,7 +28,7 @@ public enum DistortionEffectLibrary {
     }
 }
 
-// MARK: - Wave
+    // MARK: - Wave
 
 public extension View {
     /**
@@ -60,7 +60,7 @@ public extension View {
     }
 }
 
-// MARK: - Relative Wave
+    // MARK: - Relative Wave
 
 public extension VisualEffect {
     /**
@@ -93,11 +93,9 @@ public extension VisualEffect {
             maxSampleOffset: maxSampleOffset
         )
     }
-}
 
-// MARK: - Water
+    // MARK: - Water
 
-public extension VisualEffect {
     /**
      A `distortionEffect()` shader that generates a water rippling effect.
 
@@ -124,6 +122,73 @@ public extension VisualEffect {
                 .float(speed),
                 .float(strength),
                 .float(frequency)
+            ),
+            maxSampleOffset: maxSampleOffset
+        )
+    }
+    
+    // MARK: - Sine Distortion
+    
+    /// Cheap
+    func sineDistortion(
+        size: CGSize,
+        time: TimeInterval,
+        intensity: Float = 2,
+        maxSampleOffset: CGSize = .zero
+    ) -> some VisualEffect {
+        return distortionEffect(
+            DistortionEffectLibrary.sineDistortion(
+                .float2(size),
+                .float(time),
+                .float(intensity)
+            ),
+            maxSampleOffset: maxSampleOffset
+        )
+    }
+    
+    // MARK: - Worley Displacement
+    
+    func worleyDisplacement(
+        size: CGSize,
+        time: TimeInterval,
+        displace: Float = 0.125,
+        maxSampleOffset: CGSize = .zero
+    ) -> some VisualEffect {
+        return distortionEffect(
+            DistortionEffectLibrary.worleyDisplacement(
+                .float2(size),
+                .float(time),
+                .float(displace)
+            ),
+            maxSampleOffset: maxSampleOffset
+        )
+    }
+    
+    // MARK: - Barrel Distortion
+    
+    func barrelDistortion(
+        size: CGSize,
+        maxSampleOffset: CGSize = .zero
+    ) -> some VisualEffect {
+        return distortionEffect(
+            DistortionEffectLibrary.barrelDistortion(
+                .float2(size)
+            ),
+            maxSampleOffset: maxSampleOffset
+        )
+    }
+    
+    // MARK: - Pinch
+    
+    func pinch(
+        size: CGSize,
+        factor: Float = 0.25,
+        maxSampleOffset: CGSize = .zero
+    ) -> some VisualEffect {
+        return distortionEffect(
+            DistortionEffectLibrary.pinch(
+                .float2(size),
+                .float(factor)
             ),
             maxSampleOffset: maxSampleOffset
         )
