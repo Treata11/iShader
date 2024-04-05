@@ -21,7 +21,7 @@ using namespace metal;
         uv.x += 0.6 / i * cos(i * 2.5 * uv.y + iTime);
         uv.y += 0.6 / i * cos(i * 1.5 * uv.x + iTime);
     }
-    uv *= iMouse;   // uv *= max(iMouse, 1);
+    uv *= iMouse + 0.5;   // uv *= max(iMouse, 1);
     
     return half4(half3(0.1)/abs(sin(iTime - uv.y - uv.x)), 1);
 }
