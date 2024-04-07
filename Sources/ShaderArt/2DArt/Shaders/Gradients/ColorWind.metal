@@ -21,7 +21,7 @@ static float cosRange(float degrees, float range, float minimum) {
     return (((1 + cos(degrees*RADIANS)) * 0.5) * range) + minimum;
 }
 
-[[ stitchable ]] half4 colorWind(float2 position, float4 bounds, float iTime, float pinch) {
+[[ stitchable ]] half4 colorWind(float2 position, float4 bounds, float iTime, float2 iMouse) {
     half fScale = 1.25;
     
     float2 uv = position / bounds.zw;
@@ -31,7 +31,7 @@ static float cosRange(float degrees, float range, float minimum) {
     float yBoost = cosRange(iTime*0.1, 10, 5);
     
     fScale = cosRange(iTime * 15.5, 1.25, 0.5);
-    fScale += min(pinch/8, 1.3); // avoiding extreme zooms
+    fScale += min((iMouse.x + iMouse.y)/16, 1.3); // avoiding extreme zooms
     
     for (int i=1; i<zoom; i++) {
         float _i = float(i);
@@ -47,9 +47,17 @@ static float cosRange(float degrees, float range, float minimum) {
     // Add border
     float vigAmt = 5;
     float vignette = (1-vigAmt*(uv.y-0.5)*(uv.y-0.05))*(1-vigAmt*(uv.x-0.5)*(uv.x-0.5));
-    float extrusion = (col.x + col.y + col.z) / 4;
-    extrusion *= 1.5;
-    extrusion *= vignette;
+ 
+    // FIXME: Fix this mess here
+//    float extrusion = (col.x + col.y + col.z) / 4;
+//    extrusion *= 1.5;
+//    extrusion *= vignette;
     
-    return half4(col, extrusion);
+//#if os(macOS)
+//    return half4(col, 1);
+//#else
+//    return half4(col, extrusion);
+//#endif
+    
+    return half4(col, 1);
 }
