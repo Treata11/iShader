@@ -264,16 +264,38 @@ public struct Writhe: ShapeStyle, View, Sendable {
 }
 
 // MARK: - Clouds
+
 // TODO: Introduce gestures
 public struct Clouds: ShapeStyle, View, Sendable {
     var time: TimeInterval
+    /// It's `1/scale` for each cloud. Best range is `0.7...5`
+    var cloudScale: Float = 1.1
+    /// Reducing this value woud result to have the clouds smaller and more spreaded and vice versa...
+    /// The ideal range is `1...10`
+    var cloudAlpha: Float = 8
+    /// Better be in range of `0.01...0.09`
+    var windSpeed: Float = 0.03
     
-    public init(time: TimeInterval) { self.time = time }
+    public init(
+        time: TimeInterval,
+        cloudScale: Float = 1.1,
+        cloudAlpha: Float = 8,
+        windSpeed: Float = 0.03
+    ) {
+        self.time = time
+        self.cloudScale = cloudScale
+        self.cloudAlpha = cloudAlpha
+        self.windSpeed = windSpeed
+    }
     
     public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
         ShaderArtLibrary.clouds(
             .boundingRect,
-            .float(time)
+            .float(time),
+            .float(cloudScale),
+            .float(cloudAlpha),
+            .float(windSpeed),
+            .float(environment.colorScheme == .dark ? 1 : 0)
         )
     }
 }
