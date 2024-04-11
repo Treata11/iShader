@@ -40,18 +40,14 @@ let package = Package(
             targets: ["Transition"]
         )
     ],
-    
-    dependencies: [
-        .package(url: "https://github.com/Treata11/CBass", branch: "main")
-    ],
-    
+
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "iShader",
             dependencies: [
-                .target(name: "AudioVisualizer", condition: .when(platforms: [.iOS, .macOS])),
+                .target(name: "AudioVisualizer"),
                 .target(name: "ColorEffect"),
                 .target(name: "DistortionEffect"),
                 .target(name: "LayerEffect"),
@@ -61,16 +57,11 @@ let package = Package(
         ),
         .target(
             name: "AudioVisualizer",
-            dependencies: [
-                .byName(name: "CBass", condition: .when(platforms: [.iOS, .macOS]))
-            ],
             resources: [.process("Shaders")]
         ),
         .target(
             name: "ColorEffect",
-            resources: [
-                .process("Shaders")
-            ]
+            resources: [.process("Shaders")]
         ),
         .target(
             name: "DistortionEffect",

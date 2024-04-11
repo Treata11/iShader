@@ -24,7 +24,8 @@ static float cosRange(float degrees, float range, float minimum) {
 [[ stitchable ]] half4 colorWind(float2 position, float4 bounds, float iTime, float2 iMouse) {
     half fScale = 1.25;
     
-    float2 uv = position / bounds.zw;
+//    float2 uv = position / bounds.zw;
+    
     float2 p = (2*position-bounds.zw) / max(bounds.z, bounds.w);
     float ct = cosRange(iTime*5, 3, 1.1);
     float xBoost = cosRange(iTime*0.2, 5, 5);
@@ -44,10 +45,14 @@ static float cosRange(float degrees, float range, float minimum) {
     half3 col = half3(0.5*sin(3*p.x)+0.5, 0.5*sin(3*p.y)+0.5, sin(p.x+p.y));
     col *= brightness;
     
+    /*
+     Unused variables
+     
     // Add border
     float vigAmt = 5;
+    
     float vignette = (1-vigAmt*(uv.y-0.5)*(uv.y-0.05))*(1-vigAmt*(uv.x-0.5)*(uv.x-0.5));
- 
+     */
     // FIXME: Fix this mess here
 //    float extrusion = (col.x + col.y + col.z) / 4;
 //    extrusion *= 1.5;
