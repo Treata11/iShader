@@ -10,28 +10,6 @@
 
 import SwiftUI
 
-/// The **AudioVisualizer** Metal shader library.
-@dynamicMemberLookup
-public enum AudioVisualizerLibrary {
-    /**
-     Returns a new shader function representing the `[[ stitchable ]]` **MSL**
-     function called `name` in the Inferno shader library.
-     
-     Typically this subscript is used implicitly via the dynamic
-     member syntax, for example:
-     ```swift
-        let fn = AudioVisualizerLibrary.myFunction
-     ```
-     which creates a reference to the `[[ stitchable ]]` **MSL** function called
-     `myFunction()`.
-     */
-    public static subscript(dynamicMember name: String) -> ShaderFunction {
-        ShaderLibrary.bundle(Bundle.module)[dynamicMember: name]
-    }
-}
-
-
-
 /// `BASS` framework is responsible for all the audio playback & analysis
 /// which currently is only available for **iOS** & **macOS**.
 #if os(iOS) || os(macOS)
