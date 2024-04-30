@@ -83,7 +83,10 @@ let package = Package(
         // test targets
         .testTarget(
             name: "iShaderTests",
-            dependencies: ["iShader"]),
+            dependencies: [
+                .target(name: "iShader")
+            ]
+        )
     ],
     
     swiftLanguageVersions: [.v5]
