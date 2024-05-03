@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+public extension Bundle {
+    static let audioVisualizer: Bundle = .module
+}
+
 /// The **AudioVisualizer** Metal shader library.
 @dynamicMemberLookup
 public enum AudioVisualizerLibrary {
@@ -23,10 +27,6 @@ public enum AudioVisualizerLibrary {
      `myFunction()`.
      */
     public static subscript(dynamicMember name: String) -> ShaderFunction {
-        ShaderLibrary.bundle(Bundle.module)[dynamicMember: name]
+        ShaderLibrary.bundle(.audioVisualizer)[dynamicMember: name]
     }
-}
-
-public extension Bundle {
-    static let audioVisualizer: Bundle = .module
 }

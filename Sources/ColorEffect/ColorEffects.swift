@@ -1,11 +1,11 @@
 /*
- File.swift
+ ColorEffects.swift
  iShader
 
  Created by Treata Norouzi on 3/28/24.
  
  Abstract:
- 
+ A collection of ColorEffect-Shaders as view-modifier methods.
 */
 
 import SwiftUI

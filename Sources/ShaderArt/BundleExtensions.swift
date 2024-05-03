@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+public extension Bundle {
+    static let shaderArt: Bundle = .module
+}
+
 /// The **ShaderArt** Metal shader library.
 @dynamicMemberLookup
 public enum ShaderArtLibrary {
@@ -23,10 +27,6 @@ public enum ShaderArtLibrary {
      `myFunction()`.
      */
     public static subscript(dynamicMember name: String) -> ShaderFunction {
-        ShaderLibrary.bundle(Bundle.module)[dynamicMember: name]
+        ShaderLibrary.bundle(.shaderArt)[dynamicMember: name]
     }
-}
-
-public extension Bundle {
-    static let shaderArt: Bundle = .module
 }

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+public extension Bundle {
+    static let layerEffect: Bundle = .module
+}
+
 /// The **LayerEffect** Metal shader library.
 @dynamicMemberLookup
 public enum LayerEffectLibrary {
@@ -23,10 +27,6 @@ public enum LayerEffectLibrary {
      `myFunction()`.
      */
     public static subscript(dynamicMember name: String) -> ShaderFunction {
-        ShaderLibrary.bundle(Bundle.module)[dynamicMember: name]
+        ShaderLibrary.bundle(.layerEffect)[dynamicMember: name]
     }
-}
-
-public extension Bundle {
-    static let layerEffect: Bundle = .module
 }

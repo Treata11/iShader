@@ -3,13 +3,18 @@
  iShader
 
  Created by Treata Norouzi on 3/30/24.
+ 
+ Abstract:
+ A collection of DistortionEffect-Shaders as view-modifier methods or as
+ visual-effect modifiers.
 */
 
 import SwiftUI
 
-    // MARK: - Wave
-
 public extension View {
+    
+    // MARK: - Wave
+    
     /**
      A `distortionEffect()` shader that generates a wave effect, where no effect is applied on the left side of the input, and the full effect is applied on the right side.
 

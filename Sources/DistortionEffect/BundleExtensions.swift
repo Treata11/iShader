@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+public extension Bundle {
+    static let distortionEffect: Bundle = .module
+}
+
 /// The **DistortionEffect** Metal shader library.
 @dynamicMemberLookup
 public enum DistortionEffectLibrary {
@@ -23,10 +27,6 @@ public enum DistortionEffectLibrary {
      `myFunction()`.
      */
     public static subscript(dynamicMember name: String) -> ShaderFunction {
-        ShaderLibrary.bundle(Bundle.module)[dynamicMember: name]
+        ShaderLibrary.bundle(.distortionEffect)[dynamicMember: name]
     }
-}
-
-public extension Bundle {
-    static let distortionEffect: Bundle = .module
 }
