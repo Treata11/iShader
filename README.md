@@ -1,6 +1,6 @@
 # iShader
 
-iShader is a collection of open-source shaders written in Metal targeted for SwiftUI projects. The package is organized into different submodules based on use cases & functionality of shaders:
+iShader is a collection of _open-source_ shaders written in Metal targeted for SwiftUI projects. The package is organized into different submodules based on use cases & functionality of shaders:
 
 <details>
 <summary> AudioVisualizer </summary>
@@ -57,7 +57,7 @@ A Transition is an animation that smoothly animates the intermediary steps betwe
 
 ## See it in action
 
-[Book iShader](https://github.com/Treata11/Book-iShader) is a sample project, demonstrating all of the metal shaders of the library, in SwiftUI Views.
+**[Book iShader](https://github.com/Treata11/Book-iShader)** is a SwiftUI-based sample app that demonstrates the entire collection of metal fragment shaders available in the iShader library.
 
 <img src="https://github.com/Treata11/iShader/blob/main/Misc/Book_iShader.jpeg">
 
